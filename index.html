@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie de Photos Interactive</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            padding: 20px;
+        }
+
+        figure {
+            background-color: white;
+            border: 2px solid #ddd;
+            padding: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        figure:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            text-align: center;
+            font-size: 1.1em;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bienvenue dans ma Galerie de Photos Interactive</h1>
+
+    <div class="gallery">
+        <figure tabindex="0" onmouseover="highlightFigure(this)" onmouseout="resetFigure(this)" onclick="showImageDetails(this)">
+            <img src="image1.jpg" alt="Une belle vue de montagne" />
+            <figcaption>Vue de Montagne</figcaption>
+        </figure>
+        <figure tabindex="0" onmouseover="highlightFigure(this)" onmouseout="resetFigure(this)" onclick="showImageDetails(this)">
+            <img src="image2.jpg" alt="Plage au coucher du soleil" />
+            <figcaption>Plage au coucher du soleil</figcaption>
+        </figure>
+        <figure tabindex="0" onmouseover="highlightFigure(this)" onmouseout="resetFigure(this)" onclick="showImageDetails(this)">
+            <img src="image3.jpg" alt="Forêt verte et luxuriante" />
+            <figcaption>Forêt luxuriante</figcaption>
+        </figure>
+    </div>
+
+    <script>
+        // Fonction pour mettre en surbrillance une figure lors du survol
+        function highlightFigure(figure) {
+            figure.style.transform = 'scale(1.1)';
+            figure.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.15)';
+        }
+
+        // Fonction pour réinitialiser la figure lors du survol
+        function resetFigure(figure) {
+            figure.style.transform = 'scale(1)';
+            figure.style.boxShadow = 'none';
+        }
+
+        // Fonction pour afficher un détail lors du clic
+        function showImageDetails(figure) {
+            const caption = figure.querySelector('figcaption').textContent;
+            alert('Détails de l\'image: ' + caption);
+        }
+
+        // Gestion des événements du clavier
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "ArrowLeft") {
+                alert("Navigation vers l'image précédente");
+            } else if (event.key === "ArrowRight") {
+                alert("Navigation vers l'image suivante");
+            }
+        });
+    </script>
+</body>
+</html>
